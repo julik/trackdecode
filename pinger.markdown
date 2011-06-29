@@ -1,0 +1,14 @@
+###[en]Pinger[/en] [ru]Пингер[/ru]
+[en]Here you can also [grab](tb-ping-probe.php.gz) the tool I used to code this plugin, "the ping probe".[/en]
+[ru]Здесь можно [скачать](tb-ping-probe.php.gz) самопальный пингер, которым я проверял этот плагин.[/ru]
+
+[en]The "ping probe" takes some russian text (I understand it, it is perfectly non-latin and not Bi-Di, which opens another can of worms altogether), encodes it in 3 different character sets and sends every version three times - as x-www-form-urlencoded POST request with a charset declaration, as x-www-form-urlencoded POST request without charset declaration and a multipart/form-data POST request. When I ping my install with this pinger I get 9 pings for an entry, of which I can read 7 (not too shabby considering that before I would have got only 3 of these in readable form). You can change the text in the pinger and set of charsets to your liking. Due to the fact that MT truncates the ping excerpt before passing it to the plugin the length of the excerpt is different in each case (to be more specific, more chars ge ttruncated from UTF-8 than from single-byte strings).[/en]
+[ru]ping probe берет некоторео количество русского текста, кодирует его в 3 основные кодировки Рунета (Koi-8, CP-1251 и UTF-8) и высылает пинг в каждой кодировке на указанный скрипту адрес тремя способами - как x-www.rofm-urlencoded с заголовком кодировки и без и как multipart-form-data. Установка MT без TrackDecode получит из этих пингов лишь 3 в нормальном виде. Установка с TrackDecode получит из этих пингов 7. Можете использовать ping probe при написании собственного блог-движка, если соберетесь реализовать трекбеки.[/ru]
+
+[en]Due to the sore fact that I don't know Perl good enough I wrote this tool in PHP. To run this pinger you will need PHP 4 with mb_string and curl extensions compiled in. Download and unzip it. Do not edit it until you know what you are doing (it contains russian strings in UTF-8 so you have to use a unicode-aware editor accordingly. Run it from the command line. By default it pings my entry (pings are now closed on it so don't even try, I will find you and fry you), but by suppluying it an argument you can send pings to a different address, like so[/en]
+[ru]Поскольку моего знания Perl явно недостаточно для подобных задач пингер написан на PHP. Скачайте, разархивируйте. Не редактируйте. Запускать из командной строки, для его работы в вашем PHP должны присутствовать curl и расширение mbstring.[/ru]
+
+	julik$ ./tb-ping-probe.php http://my-blog.com/cgi-bin/mt-tb.cgi/5326
+	
+[en]Please do not use the pinger for trackback spam. If you want to, write your own - it takes some 6 minutes, really.[/en]
+[ru]Не используйте этот пингер для спама - лучше напишите свой. Занимает 5 минут.[/ru]
